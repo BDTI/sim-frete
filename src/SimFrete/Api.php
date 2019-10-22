@@ -5,6 +5,7 @@ namespace BDTI\SimFrete;
 
 
 use BDTI\SimFrete\Requests\AbstractRequest;
+use BDTI\SimFrete\Requests\ConsultFreight;
 use BDTI\SimFrete\Requests\TrackNFE;
 
 class Api
@@ -36,6 +37,13 @@ class Api
         /** @var TrackNFE $request */
         $request = $this->getRequest(TrackNFE::class);
         return $request->track($nfeNumber);
+    }
+
+    public function consult($senderDocument, $recipientDocument, $senderLocation, $recipientLocation, $value = 0, $weight = 0, $volume = 0)
+    {
+        /** @var ConsultFreight $request */
+        $request = $this->getRequest(ConsultFreight::class);
+        return $request->consult($senderDocument, $recipientDocument, $senderLocation, $recipientLocation, $value, $weight, $volume);
     }
 
     /**
