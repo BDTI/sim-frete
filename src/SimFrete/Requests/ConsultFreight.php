@@ -14,10 +14,18 @@ class ConsultFreight extends AbstractRequest
      * @param int $value
      * @param int $weight
      * @param int $volume
+     * @param array $conditionals
      * @return object
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consult($senderDocument, $recipientDocument, $senderLocation, $recipientLocation, $value = 0, $weight = 0, $volume = 0)
+    public function consult($senderDocument,
+                            $recipientDocument,
+                            $senderLocation,
+                            $recipientLocation,
+                            $value = 0,
+                            $weight = 0,
+                            $volume = 0,
+                            $conditionals = [])
     {
         return $this->post('/CotacaoService/consultar', [
             "remetenteCnpj"     => $senderDocument,
@@ -27,7 +35,8 @@ class ConsultFreight extends AbstractRequest
             "tipoOperacao"      => 4,
             "volumeTotal"       => $volume,
             "valorTotal"        => $value,
-            "pesoTotal"         => $weight
+            "pesoTotal"         => $weight,
+            "condicionais"      => $conditionals ?: []
         ]);
     }
 }
