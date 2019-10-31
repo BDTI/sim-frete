@@ -15,6 +15,7 @@ class ConsultFreight extends AbstractRequest
      * @param int $weight
      * @param int $volume
      * @param array $conditionals
+     * @param array $extraFields
      * @return object
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -25,9 +26,10 @@ class ConsultFreight extends AbstractRequest
                             $value = 0,
                             $weight = 0,
                             $volume = 0,
-                            $conditionals = [])
+                            $conditionals = [],
+                            $extraFields = [])
     {
-        return $this->post('/CotacaoService/consultar', [
+        $cotation = array_replace([
             "remetenteCnpj"     => $senderDocument,
             "destinatarioCnpj"  => $recipientDocument,
             "origem"            => $senderLocation,
@@ -37,6 +39,8 @@ class ConsultFreight extends AbstractRequest
             "valorTotal"        => $value,
             "pesoTotal"         => $weight,
             "condicionais"      => $conditionals ?: []
-        ]);
+        ], $extraFields);
+
+        return $this->post('/CotacaoService/consultar', $cotation);
     }
 }

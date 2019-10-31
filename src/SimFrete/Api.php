@@ -48,14 +48,33 @@ class Api
      * @param int $weight
      * @param int $volume
      * @param array $conditionals
+     * @param array $extraFields
      * @return object
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function consult($senderDocument, $recipientDocument, $senderLocation, $recipientLocation, $value = 0, $weight = 0, $volume = 0, $conditionals = [])
+    public function consult($senderDocument,
+                            $recipientDocument,
+                            $senderLocation,
+                            $recipientLocation,
+                            $value = 0,
+                            $weight = 0,
+                            $volume = 0,
+                            $conditionals = [],
+                            $extraFields = [])
     {
         /** @var ConsultFreight $request */
         $request = $this->getRequest(ConsultFreight::class);
-        return $request->consult($senderDocument, $recipientDocument, $senderLocation, $recipientLocation, $value, $weight, $volume, $conditionals);
+        return $request->consult(
+            $senderDocument,
+            $recipientDocument,
+            $senderLocation,
+            $recipientLocation,
+            $value,
+            $weight,
+            $volume,
+            $conditionals,
+            $extraFields
+        );
     }
 
     /**
