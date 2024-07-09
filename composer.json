@@ -1,6 +1,6 @@
 {
     "name": "bdti/sim-frete",
-    "description": "API pade integração com SimFrete",
+    "description": "API de integração com SimFrete",
     "license": "MIT",
     "authors": [
         {
@@ -10,10 +10,10 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "guzzlehttp/guzzle": "^6.3@dev"
+        "guzzlehttp/guzzle": "^7.8"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5@dev"
+        "phpunit/phpunit": "^11.2.6"
     },
     "autoload": {
         "psr-4": {
